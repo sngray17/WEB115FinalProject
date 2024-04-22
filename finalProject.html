@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WEB-115 Final Project</title>
+    <style>
+        body {
+            font-family: 'Optima', sans-serif;
+            background-color: #FFFFFF;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            width: 100%;
+            background-image: url(./images/meal.jpeg);
+            background-size: cover;
+        }
+
+        .overlay {
+            height: 100vh;
+            width: 100%;
+            position: absolute;
+            opacity: .5;
+            background-color: #333;
+            z-index: -1;
+        }
+
+        .container {
+            background-color: rgba(255, 253, 253, 0.4);
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            width: 400px;
+            max-width: 90%;
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        button {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 16px;
+            box-sizing: border-box;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        button {
+            background-color: #319B9E;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #319B9E;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            text-align: left;
+        }
+
+        ul li {
+            margin-bottom: 16px;
+        }
+
+        ul li strong {
+            font-weight: bold;
+        }
+
+        .logo {
+            margin-bottom: 20px;
+        }
+
+        .logo img {
+            width: 300px;
+            height: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="logo">
+            <img src="/Users/stacygray/Documents/Wake Tech Spring 2024/WEB115 Markup and Scripting/Final Project/images/logo.png"
+                alt="Perfectly Portioned Fitness Logo">
+        </div>
+        <!-- <h1>Perfectly Portioned Fitness</h1> -->
+        <form id="mealPlanForm">
+            <input type="text" id="name" name="name" placeholder="Enter Your Name" required><br>
+            <input type="email" id="email" name="email" placeholder="Enter Your Email" required><br>
+            <input type="text" id="goal" name="goal" placeholder="Goal for the Week"><br>
+
+            <h3>Meal Plan for the Week</h3>
+            <label>Monday - Breakfast:</label>
+            <input type="text" name="mondayBreakfast" placeholder="Description"><br>
+            <label>Monday - Snack:</label>
+            <input type="text" name="mondaySnack" placeholder="Description"><br>
+            <!-- Add more days and meals as needed -->
+
+            <button type="button" onclick="generateMealPlan()">Generate Meal Plan</button>
+            <button type="reset">Clear</button>
+        </form>
+    </div>
+
+    <script src="finalProjectJS.js"></script>
+</body>
+
+</html>
