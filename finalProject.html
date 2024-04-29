@@ -11,17 +11,39 @@
             background-color: #FFFFFF;
             margin: 0;
             padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
+            padding-bottom: 24px;
+            height: 100%;
             width: 100%;
             background-image: url(./images/meal.jpeg);
             background-size: cover;
+            position: relative;
+        }
+
+        .banner {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            width: 100%;
+            padding-block: 10px;
+            margin-block-end: 10px;
+        }
+
+        .logo {
+            width: 180px;
+            margin-bottom: 10px;
+        }
+
+        .bannerTitle {
+            margin-left: 20px;
+            color: #ddd;
+            text-align: center;
+            margin: 0 auto;
+            display: inline-block;
+            font-size: 20px;
         }
 
         .overlay {
-            height: 100vh;
+            height: 100%;
             width: 100%;
             position: absolute;
             opacity: .5;
@@ -29,20 +51,23 @@
             z-index: -1;
         }
 
-        .container {
-            background-color: rgba(255, 253, 253, 0.4);
+        .section {
+            background-color: rgba(255, 253, 253, 0.5);
             border-radius: 8px;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
             padding: 40px;
-            width: 400px;
-            max-width: 90%;
+            max-width: 400px;
+            height: fit-content;
+            margin: 0 auto;
             text-align: center;
         }
 
-        h1 {
-            color: #333;
-            font-size: 32px;
-            margin-bottom: 20px;
+        .daySelect {
+            width: 100%;
+            padding-block: 12px;
+            padding-inline: 8px;
+            font-size: 16px;
+            margin-bottom: 16px;
         }
 
         input[type="text"],
@@ -57,6 +82,10 @@
             font-size: 16px;
         }
 
+        #saveMeals {
+            margin-block-end: 60px;
+        }
+
         button {
             background-color: #319B9E;
             color: white;
@@ -66,7 +95,7 @@
         }
 
         button:hover {
-            background-color: #319B9E;
+            background-color: #206467;
         }
 
         ul {
@@ -82,44 +111,52 @@
         ul li strong {
             font-weight: bold;
         }
-
-        .logo {
-            margin-bottom: 20px;
-        }
-
-        .logo img {
-            width: 300px;
-            height: auto;
-        }
     </style>
 </head>
 
-<body>
+<body onload="onLoad()" id="documentBody">
     <div class="overlay"></div>
-    <div class="container">
-        <div class="logo">
-            <img src="/Users/stacygray/Documents/Wake Tech Spring 2024/WEB115 Markup and Scripting/Final Project/images/logo.png"
-                alt="Perfectly Portioned Fitness Logo">
-        </div>
-        <!-- <h1>Perfectly Portioned Fitness</h1> -->
-        <form id="mealPlanForm">
-            <input type="text" id="name" name="name" placeholder="Enter Your Name" required><br>
+    <header class="banner">
+        <h1 class="bannerTitle">Stacy Gray - WEB115-0006 Spring 2024 </h1>
+    </header>
+    <div class="section">
+        <img class="logo"
+            src="/Users/stacygray/Documents/Wake Tech Spring 2024/WEB115 Markup and Scripting/GitHub/WEB115FinalProject/images/logo.png"
+            alt="Perfectly Portioned Fitness Logo">
+        <form id="mealPlanForm" action="generateMealPlan">
+            <input type="text" id="name" name="name" placeholder="Enter Your Name"><br>
             <input type="email" id="email" name="email" placeholder="Enter Your Email" required><br>
             <input type="text" id="goal" name="goal" placeholder="Goal for the Week"><br>
 
-            <h3>Meal Plan for the Week</h3>
-            <label>Monday - Breakfast:</label>
-            <input type="text" name="mondayBreakfast" placeholder="Description"><br>
-            <label>Monday - Snack:</label>
-            <input type="text" name="mondaySnack" placeholder="Description"><br>
-            <!-- Add more days and meals as needed -->
+            <h3>Build Your Meal Plan:</h3>
+            <select class="daySelect" id="days">
+                <option value="Monday">Monday</option>
+                <option value="Tuesday">Tuesday</option>
+                <option value="Wednesday">Wednesday</option>
+                <option value="Thursday">Thursday</option>
+                <option value="Friday">Friday</option>
+                <option value="Saturday">Saturday</option>
+                <option value="Sunday">Sunday</option>
+            </select>
+            <label>Breakfast:</label>
+            <input type="text" name="breakfast" placeholder="Description"><br>
+            <label>Snack one:</label>
+            <input type="text" name="snack1" placeholder="Description"><br>
+            <label>Lunch:</label>
+            <input type="text" name="lunch" placeholder="Description"><br>
+            <label>Snack two:</label>
+            <input type="text" name="snack2" placeholder="Description"><br>
+            <label>Dinner:</label>
+            <input type="text" name="dinner" placeholder="Description"><br>
 
-            <button type="button" onclick="generateMealPlan()">Generate Meal Plan</button>
-            <button type="reset">Clear</button>
+            <button type="button" id="saveMeals">Save meals</button>
+            <button type="button" id="generateButton">Generate Meal Plan</button>
+            <button type="reset" id="clear">Clear All</button>
         </form>
     </div>
 
-    <script src="finalProjectJS.js"></script>
+
+    <script src="projectJS.js"></script>
 </body>
 
 </html>
